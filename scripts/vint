@@ -5,7 +5,6 @@
 Usage:
     vint start <id>
     vint finish
-    vint reset
 
 Options:
     -h, --help

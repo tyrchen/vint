@@ -288,7 +288,7 @@ def main(arguments):
 
         InterviewManager(id).start()
     else:
-        reset()
+        print("Please specify a correct command.")
 
 
 def reset():
