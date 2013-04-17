@@ -37,7 +37,7 @@ setup(
     keywords="python cerf exam",
     packages=['vint'],
     scripts=['scripts/vint'],
-    install_requires=['requests', 'docopt', 'dateutil'],
+    install_requires=['requests', 'docopt', 'python-dateutil'],
     classifiers=[
         'Intended Audience :: Developers',
         'Natural Language :: English',
