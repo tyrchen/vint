@@ -9,7 +9,7 @@ EXAM_CONFIG_FILE = '.interview.json'
 CASE_CONFIG_FILE = '.case.json'
 FIRST_EXTENSIONS = ['.h']
 
-HOSTNAME = 'http://localhost:8000'
+HOSTNAME = 'http://exam.tchen.me'
 
 INSTRUCTION_FILE = 'README'
 # Please provide a correct url which contains interview api.
