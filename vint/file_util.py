@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import json
 import logging
 import os
+import codecs
 
 __author__ = 'tchen'
 logger = logging.getLogger(__name__)
@@ -15,7 +16,7 @@ EXAM_CONFIG_FILE = '.interview.json'
 CASE_CONFIG_FILE = '.case.json'
 
 EXAM_INSTRUCTION_TEMPLATE = '''
-Hello %(candidate)s, Welcome to exam %(name)s
+Hello %(applicant)s, Welcome to exam %(name)s
 
 %(description)s
 
@@ -44,7 +45,7 @@ Instructions:
 
 
 def write_file(filename, content):
-    f = open(filename, 'w+')
+    f = codecs.open(filename, 'w+', encoding='utf8')
     f.write(content)
     f.close()
 
@@ -60,7 +61,7 @@ class Template(object):
     def create_exam_instruction(exam_path, interview, exam):
         filename = os.path.join(os.getcwd(), exam_path, INSTRUCTION_FILE)
         content = EXAM_INSTRUCTION_TEMPLATE % {
-            'candidate': interview['candidate'],
+            'applicant': interview['applicant'],
             'name': exam['name'],
             'description': exam['description'],
         }
@@ -94,7 +95,7 @@ class Template(object):
 class FileUtil(object):
     @staticmethod
     def read_content(filename):
-        return open(filename, 'r').read()
+        return codecs.open(filename, 'r', encoding='utf8').read()
 
     @staticmethod
     def get_valid_files(path, extentions):
@@ -125,7 +126,7 @@ class FileUtil(object):
     @staticmethod
     def read_json(path, name):
         filename = os.path.join(path, name)
-        return json.load(open(filename, 'r'))
+        return json.load(codecs.open(filename, 'r', encoding='utf8'))
 
     @staticmethod
     def read_interview(path):

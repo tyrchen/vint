@@ -28,7 +28,7 @@ if sys.argv[-1] == 'publish':
 setup(
     name='vint',
     version=get_version(),
-    description='Cerf exam service client to let the candidate to start/finish the exam',
+    description='Cerf exam service client to let the applicant to start/finish the exam',
     long_description=open('README.md').read(),
     license=open("LICENSE.txt").read(),
     author="Tyr Chen",

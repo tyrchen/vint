@@ -64,10 +64,14 @@ class InterviewManager(object):
             print('Can not retrieve proper interview by id %s. Please contact your hiring manager.' % self.id)
             exit(-1)
 
+        if calc_time_spent(data['started']) > 1 or os.path.exists(self.exam_path):
+            print('This interview has been started already!')
+            exit(-1)
+
         self.interview = data
         self.exam_id = self.interview['exam']
 
-        print('Nice to meet you, %s! Thanks for your interest in Juniper China R&D.' % data['candidate'])
+        print('Nice to meet you, %s! Thanks for your interest in Juniper China R&D.' % data['applicant'])
         print('Creating the exam environment...'),
         self.generate_environment()
         print('Done!\nYou can "cd %s" to start your exam now.' % self.exam_path)
@@ -91,7 +95,7 @@ class InterviewManager(object):
 
         data = {
             'interview': self.id,
-            'author': self.interview['candidate_id'],
+            'applicant': self.interview['applicant_id'],
             'case': case['cid'],
             'content': content
         }

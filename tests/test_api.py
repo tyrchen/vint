@@ -52,7 +52,7 @@ class CerfAnswerSuite(unittest.TestCase):
     def setUp(self):
         self.data = {
             'interview': 1,
-            'author': 2,
+            'applicant': 2,
             'case': 1,
             'content': 'Hello world'
         }
@@ -70,7 +70,7 @@ class CerfAnswerSuite(unittest.TestCase):
         self.answer_id = answer['id']
 
         self.assertEqual(answer['interview'], self.data['interview'])
-        self.assertEqual(answer['author'], self.data['author'])
+        self.assertEqual(answer['applicant'], self.data['applicant'])
         self.assertEqual(answer['case'], self.data['case'])
         self.assertEqual(answer['content'], self.data['content'])
 
