@@ -13,6 +13,5 @@ Options:
 from vint import vint
 from docopt import docopt
 
-
 arguments = docopt(__doc__)
 vint.main(arguments)

@@ -126,7 +126,7 @@ class InterviewManager(object):
         interview = FileUtil.read_interview('.')
         self.cerf_api = Cerf(interview['id'], interview['authcode'])
 
-        interview = self.cerf_api.interview.retrieve()
+        interview = self.cerf_api.interview.retrieve(interview['id'])
         self.load_data(interview)
 
         if interview['time_spent']:
