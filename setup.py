@@ -29,10 +29,9 @@ if sys.argv[-1] == 'publish':
 
 
 def long_description():
-    """Pre-process the README so that PyPi can render it properly."""
-    with codecs.open('README.md', encoding='utf8') as f:
-        md = f.read()
-    return md
+    return '''
+    The command line client for cerf exam service.
+    '''
 
 setup(
     name='vint',
