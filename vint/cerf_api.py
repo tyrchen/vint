@@ -31,7 +31,7 @@ class Interview(object):
     def retrieve(self, id=None, authcode=None):
         id = id or self.id
         authcode = authcode or self.authcode
-        url = urljoin(self.api_base, str(id))
+        url = urljoin(self.api_base, str(id)) + '/'
 
         r = requests.get(url, data={'authcode': authcode})
         return json.loads(r.text)
@@ -39,11 +39,13 @@ class Interview(object):
     def update(self, action, id=None, authcode=None):
         id = id or self.id
         authcode = authcode or self.authcode
-        url = urljoin(self.api_base, str(id))
+        url = urljoin(self.api_base, str(id)) + '/'
 
-        r = requests.put(url, data={'authcode': authcode, 'action': action})
-
-        return json.loads(r.text)
+        try:
+            r = requests.put(url, data={'authcode': authcode, 'action': action})
+            return json.loads(r.text)
+        except:
+            return {}
 
     def start(self, id=None, authcode=None):
         return self.update('start', id, authcode)
@@ -61,10 +63,13 @@ class Exam(object):
         self.api_base = hostname + '/api/exams/'
 
     def retrieve(self, id):
-        url = urljoin(self.api_base, str(id))
+        url = urljoin(self.api_base, str(id)) + '/'
 
-        r = requests.get(url, data={'authcode': self.authcode})
-        return json.loads(r.text)
+        try:
+            r = requests.get(url, data={'authcode': self.authcode})
+            return json.loads(r.text)
+        except:
+            return {}
 
 
 class Answer(object):

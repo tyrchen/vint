@@ -127,6 +127,7 @@ class InterviewManager(object):
         self.cerf_api = Cerf(interview['id'], interview['authcode'])
 
         interview = self.cerf_api.interview.retrieve()
+        self.load_data(interview)
 
         if interview['time_spent']:
             print('Your exam is over. Please stay tuned.')

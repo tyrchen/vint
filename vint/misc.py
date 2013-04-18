@@ -12,4 +12,4 @@ def calc_time_spent(start):
     started = parser.parse(start)
     now = datetime.now()
     diff = now - started
-    return diff / 60
+    return diff.seconds / 60
