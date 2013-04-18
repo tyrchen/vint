@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 import logging
-from datetime import datetime
-from dateutil import parser
 import json
 from urlparse import urljoin
 import requests
@@ -10,7 +8,8 @@ import requests
 __author__ = 'tchen'
 logger = logging.getLogger(__name__)
 
-DEFAULT_HOSTNAME = 'http://exam.tchen.me'
+#DEFAULT_HOSTNAME = 'http://exam.tchen.me'
+DEFAULT_HOSTNAME = 'http://localhost:8000'
 
 
 class Cerf(object):
@@ -32,30 +31,28 @@ class Interview(object):
     def retrieve(self, id=None, authcode=None):
         id = id or self.id
         authcode = authcode or self.authcode
-        url = urljoin(self.api_base, id)
+        url = urljoin(self.api_base, str(id))
 
         r = requests.get(url, data={'authcode': authcode})
         return json.loads(r.text)
 
-    def update(self, data, id=None, authcode=None):
+    def update(self, action, id=None, authcode=None):
         id = id or self.id
         authcode = authcode or self.authcode
         url = urljoin(self.api_base, str(id))
 
-        info = {'authcode': authcode}
-        info.update(data)
+        r = requests.put(url, data={'authcode': authcode, 'action': action})
 
-        r = requests.put(url, data=info)
         return json.loads(r.text)
 
     def start(self, id=None, authcode=None):
-        return self.update({'action': 'start'}, id, authcode)
+        return self.update('start', id, authcode)
 
     def finish(self, id=None, authcode=None):
-        return self.update({'action': 'finish'}, id, authcode)
+        return self.update('finish', id, authcode)
 
     def reset(self, id=None, authcode=None):
-        return self.update({'action': 'reset'}, id, authcode)
+        return self.update('reset', id, authcode)
 
 
 class Exam(object):
