@@ -8,8 +8,8 @@ import requests
 __author__ = 'tchen'
 logger = logging.getLogger(__name__)
 
-#DEFAULT_HOSTNAME = 'http://exam.tchen.me'
-DEFAULT_HOSTNAME = 'http://localhost:8000'
+DEFAULT_HOSTNAME = 'http://exam.tchen.me'
+#DEFAULT_HOSTNAME = 'http://localhost:8000'
 
 
 class Request(object):
