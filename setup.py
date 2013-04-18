@@ -4,6 +4,8 @@
 import os
 import sys
 import re
+import codecs
+import vint
 
 try:
     from setuptools import setup
@@ -25,15 +27,23 @@ if sys.argv[-1] == 'publish':
     os.system('python setup.py sdist upload')
     sys.exit()
 
+
+def long_description():
+    """Pre-process the README so that PyPi can render it properly."""
+    with codecs.open('README.md', encoding='utf8') as f:
+        md = f.read()
+    return md
+
 setup(
     name='vint',
     version=get_version(),
     description='Cerf exam service client to let the applicant to start/finish the exam',
-    long_description=open('README.md').read(),
-    license=open("LICENSE.txt").read(),
-    author="Tyr Chen",
-    author_email="tyr.chen@gmail.com",
-    url='https://github.com/tyrchen/vint/',
+    long_description=long_description(),
+    license=vint.__license__,
+    author=vint.__author__,
+    author_email=vint.__email__,
+    url='http://tchen.me',
+    download_url='https://github.com/tyrchen/vint',
     keywords="python cerf exam",
     packages=['vint'],
     scripts=['scripts/vint'],
@@ -41,7 +51,8 @@ setup(
     classifiers=[
         'Intended Audience :: Developers',
         'Natural Language :: English',
-        'License :: OSI Approved :: MIT',
+        'Development Status :: 3 - Alpha',
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.6',
