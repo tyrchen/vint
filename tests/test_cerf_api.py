@@ -2,7 +2,8 @@
 import unittest
 
 import sys
-sys.path.append('../')
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'vint'))
 from vint.cerf_api import Interview, Exam, Answer
 
 
@@ -76,4 +77,3 @@ class CerfAnswerSuite(unittest.TestCase):
 
 
 
-unittest.main()

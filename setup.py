@@ -45,8 +45,10 @@ setup(
     download_url='https://github.com/tyrchen/vint',
     keywords="python cerf exam",
     packages=['vint'],
-    scripts=['scripts/vint'],
+    scripts=['bin/vint'],
     install_requires=['requests', 'docopt', 'python-dateutil'],
+    module='vint',
+    test_suite='tests',
     classifiers=[
         'Intended Audience :: Developers',
         'Natural Language :: English',
