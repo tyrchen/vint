@@ -74,6 +74,3 @@ class CerfAnswerSuite(unittest.TestCase):
         self.assertEqual(answer['applicant'], self.data['applicant'])
         self.assertEqual(answer['case'], self.data['case'])
         self.assertEqual(answer['content'], self.data['content'])
-
-
-

@@ -7,5 +7,3 @@ __author__ = 'Tyr Chen'
 __email__ = 'tyr.chen@gmail.com'
 __license__ = 'MIT'
 __copyright__ = 'Copyright 2013 Tyr Chen'
-
-
