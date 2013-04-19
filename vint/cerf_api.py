@@ -99,10 +99,10 @@ class Answer(Request):
     def create(self, data):
         headers = {'Content-type': 'application/json', 'Accept': '*/*'}
         try:
-            r = requests.post(self.api_base + '?authcode=%s' % self.authcode, data=json.dumps(data), headers=headers)
+            r = requests.post(self.api_base + '?authcode=%s' % self.authcode,
+                              data=json.dumps(data), headers=headers)
             if r.status_code != requests.codes.created:
                 return {}
             return json.loads(r.text)
-        except Exception as ex:
+        except Exception:
             return {}
-
