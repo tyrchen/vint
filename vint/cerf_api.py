@@ -17,8 +17,15 @@ class Request(object):
     api_path = '/'
 
     def __init__(self, authcode):
+        from misc import config
         self.authcode = authcode
         self.api_base = self.hostname + self.api_path
+
+        if config:
+            try:
+                self.hostname = config.get('global', 'host')
+            except:
+                pass
 
     def retrieve(self, id):
         url = urljoin(self.api_base, str(id)) + '/'
@@ -50,6 +57,7 @@ class Cerf(object):
         if config:
             try:
                 self.hostname = config.get('global', 'host')
+                print 'Host name is: %s' % self.hostname
             except:
                 pass
 
